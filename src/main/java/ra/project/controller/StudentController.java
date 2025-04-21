@@ -69,7 +69,12 @@ public class StudentController {
             model.addAttribute("student", request);
             return "student/add";
         }
-        studentService.save(request);
+        try{
+            studentService.save(request);
+        }catch (Exception e){
+            return "student/add";
+        }
+
         return "redirect:/student";
     }
 

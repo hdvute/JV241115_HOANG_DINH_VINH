@@ -6,8 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
@@ -37,18 +39,19 @@ public class Student {
     @Column(name = "phone", nullable = false, unique = true, length = 15)
     private String phone;
 
-    @NotBlank(message = "Không được đc trống!")
+    @NotNull(message = "Không được để trống!")
     @Column(name = "sex", nullable = false)
     private Boolean sex;
 
-    @NotBlank(message = "Không được đc trống!")
+    @NotNull(message = "Không được để trống!")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "bid", nullable = false)
     private LocalDate bid;
 
     @Column(name = "avatar", columnDefinition = "TEXT")
     private String avatar;
 
-    @NotBlank(message = "Không được đc trống!")
+    @NotNull(message = "Không được để trống!")
     @Column(name = "status", nullable = false)
     private Boolean status;
 
